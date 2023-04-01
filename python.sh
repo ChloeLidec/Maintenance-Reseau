@@ -21,25 +21,37 @@ eval SELECTION=( $(whiptail --title "Python" \
 
 if [ "${#SELECTION[@]}" != 0 ]; then
     for choice in "${SELECTION[@]}"; do
-        if [ $choice == "Python" ]; then
+        if [ "$choice" == "Python" ]; then
             sudo apt install -y python3
             sudo apt install -y python3-pip
-        elif [ $choice == "Basic python vscode extension" ]; then
+            echo -e "${GREEN} Python installation done ${COLOR_OFF}"
+        elif [ "$choice" == "Basic python vscode extension" ]; then
             code --install-extension ms-python.python
-        elif [ $choice == "Autodocstring vscode extension" ]; then
+            echo -e "${GREEN} Basic python vscode extension installation done ${COLOR_OFF}"
+            echo -e "${YELLOW} If there was an installation error, it is probably because you don't have code installed. ${COLOR_OFF}"
+            echo -e "${BLUE} You can install code by running the principal script ${COLOR_OFF}"
+        elif [ "$choice" == "Autodocstring vscode extension" ]; then
             code --install-extension njpwerner.autodocstring
-        elif [ $choice == "Pylance vscode extension" ]; then
+            echo -e "${GREEN} Autodocstring installation done ${COLOR_OFF}"
+            echo -e "${YELLOW} If there was an installation error, it is probably because you don't have code installed. ${COLOR_OFF}"
+            echo -e "${BLUE} You can install code by running the principal script ${COLOR_OFF}"
+        elif [ "$choice" == "Pylance vscode extension" ]; then
             code --install-extension ms-python.vscode-pylance
-        elif [ $choice == "Pytest" ]; then
+            echo -e "${GREEN} Pylance installation done ${COLOR_OFF}"
+            echo -e "${YELLOW} If there was an installation error, it is probably because you don't have code installed. ${COLOR_OFF}"
+            echo -e "${BLUE} You can install code by running the principal script ${COLOR_OFF}"
+        elif [ "$choice" == "Pytest" ]; then
             sudo apt install -y python3-pytest
-        elif [ $choice == "Pylint" ]; then
+            echo -e "${GREEN} Pytest installation done ${COLOR_OFF}"
+        elif [ "$choice" == "Pylint" ]; then
             sudo apt install -y pylint
-        elif [ $choice == "Pygame" ]; then
+            echo -e "${GREEN} Pylint installation done ${COLOR_OFF}"
+        elif [ "$choice" == "Pygame" ]; then
             pip install pygame
+            echo -e "${GREEN} Pygame installation done ${COLOR_OFF}"
         fi
     done
     echo -e "${GREEN} Installation complete ${COLOR_OFF}"
 else
     echo -e " ${RED} User selected Cancel. ${COLOR_OFF}"
 fi
-
