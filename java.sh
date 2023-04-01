@@ -26,24 +26,26 @@ if [ $exitstatus = 0 ]; then
 
         if [ "${#SELECTED[@]}" != 0 ]; then
             for choice in "${SELECTED[@]}"; do
-                if [ $choice == "Java" ]; then
+                if [ "$choice" == "Java" ]; then
                     sudo apt install -y default-jre
                     sudo apt install -y default-jdk
-                    echo -e "${GREEN} Java installed ${COLOR_OFF}"
-                elif [ $choice == "MariaDB jdbc" ]; then
+                    echo -e "${GREEN} Java installation done ${COLOR_OFF}"
+                elif [ "$choice" == "MariaDB jdbc" ]; then
                     sudo apt install -y libmariadb-java
-                    echo -e "${GREEN} MariaDB jdbc installed ${COLOR_OFF}"
-                elif [ $choice == "Java vscode extensions" ]; then
+                    echo -e "${GREEN} MariaDB jdbc instalaltion done ${COLOR_OFF}"
+                elif [ "$choice" == "Java vscode extensions" ]; then
                     code --install-extension visualstudioexptteam.vscodeintellicode 
                     code --install-extension vscjava.vscode-java-debug 
                     code --install-extension redhat.java 
                     code --install-extension vscjava.vscode-maven 
                     code --install-extension vscjava.vscode-java-test 
                     code --install-extension vscjava.vscode-java-dependency
-                    echo -e "${GREEN} Java vscode extensions installed ${COLOR_OFF}"
-                elif [ $choice == "Maven" ]; then
+                    echo -e "${GREEN} Java vscode extensions installation done ${COLOR_OFF}"
+                    echo -e "${YELLOW} If there was an installation error, it is probably because you don't have code installed. ${COLOR_OFF}"
+                    echo -e "${BLUE} You can install code by running the principal script ${COLOR_OFF}"
+                elif [ "$choice" == "Maven" ]; then
                     sudo apt install -y maven
-                    echo -e "${GREEN} Maven installed ${COLOR_OFF}"
+                    echo -e "${GREEN} Maven installation done ${COLOR_OFF}"
                 fi
             done
             echo -e "${GREEN} Installation complete ${COLOR_OFF}"
