@@ -29,17 +29,21 @@ if [ $exitstatus = 0 ]; then
                 if [ $choice == "Java" ]; then
                     sudo apt install -y default-jre
                     sudo apt install -y default-jdk
+                    echo -e "${GREEN} Java installed ${COLOR_OFF}"
                 elif [ $choice == "MariaDB jdbc" ]; then
                     sudo apt install -y libmariadb-java
+                    echo -e "${GREEN} MariaDB jdbc installed ${COLOR_OFF}"
                 elif [ $choice == "Java vscode extensions" ]; then
                     code --install-extension visualstudioexptteam.vscodeintellicode 
                     code --install-extension vscjava.vscode-java-debug 
                     code --install-extension redhat.java 
                     code --install-extension vscjava.vscode-maven 
                     code --install-extension vscjava.vscode-java-test 
-                    code --install-extension vscjava.vscode-java-dependency 
+                    code --install-extension vscjava.vscode-java-dependency
+                    echo -e "${GREEN} Java vscode extensions installed ${COLOR_OFF}"
                 elif [ $choice == "Maven" ]; then
                     sudo apt install -y maven
+                    echo -e "${GREEN} Maven installed ${COLOR_OFF}"
                 fi
             done
             echo -e "${GREEN} Installation complete ${COLOR_OFF}"
