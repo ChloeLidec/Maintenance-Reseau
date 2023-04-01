@@ -11,7 +11,8 @@ BLUE='\033[0;34m'         # Blue
 
 CHOIX=$(whiptail --title "Git" --menu \
 "Choose what you want to do" 25 80 8 \
-"Commit modified files from actual directory" "" \
+"Commit modified files from actual directory" "" \`
+"Config" "" \
 "Push" "" \
 "Pull" "" \
 "Status" "" \
@@ -62,6 +63,14 @@ if [ $exitstatus = 0 ]; then
         read TAG
         git tag $TAG
         echo -e " ${BLUE} Tag done ${COLOR_OFF}"
+    elif [ "$CHOIX" == "Config" ]; then
+        echo -e " ${BLUE} Enter your name ${COLOR_OFF}"
+        read NAME
+        git config --global user.name "$NAME"
+        echo -e " ${BLUE} Enter your email ${COLOR_OFF}"
+        read EMAIL
+        git config --global user.email "$EMAIL"
+        echo -e " ${BLUE} Config done ${COLOR_OFF}"
     fi
 else
     echo "${RED} You chose Cancel. ${COLOR_OFF}"
