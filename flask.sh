@@ -9,7 +9,7 @@ GREEN='\033[0;32m'        # Green
 YELLOW='\033[0;33m'       # Yellow
 BLUE='\033[0;34m'         # Blue
 
-eval SELECTION=$(whiptail --title "Flask" --checklist \
+eval SELECTION=( $(whiptail --title "Flask" --checklist \
 "Choose what you want to install" 25 80 8 \
 "Flask" "" ON \
 "Virtual Env" "" OFF \
@@ -17,7 +17,7 @@ eval SELECTION=$(whiptail --title "Flask" --checklist \
 "Flask-WTF" "" OFF \
 "Flask-Login" "" OFF \
 "Flask-Bootstrap" "" OFF \
-"Python YAML" "" OFF 3>&1 1>&2 2>&3)
+"Python YAML" "" OFF 3>&1 1>&2 2>&3))
 
 if [ "${#SELECTION[@]}" != 0 ]; then
     for choice in "${SELECTION[@]}"; do
