@@ -1,6 +1,4 @@
 # fichier pour optimiser les commandes git avec un menu
-git config --global user.name "ChloeLidec"
-git config --global user.email "chloe.lidec@etu.univ-orleans.fr"
 
 echo("Choisissez une option:")
 echo("1. commit fic modif et ajoutés")
