@@ -56,3 +56,7 @@ if [ $exitstatus = 0 ]; then
             read PROJECT_PATH
             jar cvfe $JAR_NAME Main $PROJECT_PATH
         fi
+    fi
+else
+    echo "${RED} You chose Cancel. ${COLOR_OFF}"
+fi
