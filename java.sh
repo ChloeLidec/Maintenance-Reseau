@@ -16,7 +16,7 @@ CHOIX=$(whiptail --title "Java" --menu \
 
 exitstatus=$?
 if [ $exitstatus = 0 ]; then
-    if [ $CHOIX == "See java installations" ]; then
+    if [ "$CHOIX" == "See java installations" ]; then
         eval SELECTED=( $(whiptail --title "Java" \
         --checklist "Choose what you want to install" 25 80 8 \
         "Java" "" ON \
@@ -46,17 +46,17 @@ if [ $exitstatus = 0 ]; then
         else
             echo -e " ${RED} User selected Cancel. ${COLOR_OFF}"
         fi
-    elif [ $CHOIX == "Export project as jar" ]; then
+    elif [ "$CHOIX" == "Export project as jar" ]; then
         if (whiptail --title "Info export" --yesno "Does your project use other things than java such as jdbc or javafx?" 8 78); then
-            echo "${YELLOW} You need to use maven and configure the project with vscode to export your project correctly ${COLOR_OFF}"
+            echo -e "${YELLOW} You need to use maven and configure the project with vscode to export your project correctly ${COLOR_OFF}"
         else
-            echo " ${BLUE} What do you want to name your jar file? (with .jar at the end) ${COLOR_OFF}"
+            echo -e " ${BLUE} What do you want to name your jar file? (with .jar at the end) ${COLOR_OFF}"
             read JAR_NAME
-            echo "${BLUE} What is the path(absolute) to your project? ${COLOR_OFF}"
+            echo -e "${BLUE} What is the path(absolute) to your project? ${COLOR_OFF}"
             read PROJECT_PATH
             jar cvfe $JAR_NAME Main $PROJECT_PATH
         fi
     fi
 else
-    echo "${RED} You chose Cancel. ${COLOR_OFF}"
+    echo -e "${RED} You chose Cancel. ${COLOR_OFF}"
 fi
