@@ -63,12 +63,16 @@ if [ $exitstatus = 0 ]; then
         do
             echo -e "${BLUE} What do you want to name your column? ${COLOR_OFF}"
             read COLUMN_NAME
+            if [ "$i" = 1 ]; then
+                pmk="PRIMARY KEY ($COLUMN_NAME)"
+            fi
             echo -e "${BLUE} What type of data do you want to store in this column?(Please mind how you write it) ${COLOR_OFF}"
             echo -e "${YELLOW} Examples: VARCHAR(255),INT,DATE,TEXT ${COLOR_OFF}"
             read COLUMN_TYPE
             cmd="$cmd $COLUMN_NAME $COLUMN_TYPE,"
         done
-        echo ");" | sudo mysql
+        cmd="$cmd $pmk);"
+        echo $cmd | sudo mysql
         echo -e "${GREEN} Your table has been created! ${COLOR_OFF}"
     elif [ "$CHOIX" = "Show tables" ]; then
         echo "SHOW DATABASES;" | sudo mysql
