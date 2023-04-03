@@ -72,15 +72,14 @@ if [ $exitstatus = 0 ]; then
             cmd="$cmd $COLUMN_NAME $COLUMN_TYPE,"
         done
         cmd="$cmd $pmk);"
-        echo $cmd | sudo mysql
+        echo "USE $DATABASE_NAME; $cmd" | sudo mysql
         echo -e "${GREEN} Your table has been created! ${COLOR_OFF}"
     elif [ "$CHOIX" = "Show tables" ]; then
         echo "SHOW DATABASES;" | sudo mysql
         echo -e "${BLUE} Choose a database to show tables in ${COLOR_OFF}"
         read DATABASE_NAME
-        echo "USE $DATABASE_NAME;" | sudo mysql
-        echo "SHOW TABLES;" | sudo mysql
+        echo "USE $DATABASE_NAME;SHOW TABLES;" | sudo mysql
     fi
 else
-    echo "You chose Cancel."
+    echo -e "${RED}You chose Cancel.${COLOR_OFF}"
 fi
