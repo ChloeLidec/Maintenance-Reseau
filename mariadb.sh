@@ -53,13 +53,12 @@ if [ $exitstatus = 0 ]; then
         echo "SHOW DATABASES;" | sudo mysql
         echo -e "${BLUE} Choose a database to create a table in ${COLOR_OFF}"
         read DATABASE_NAME
-        echo "USE $DATABASE_NAME;" | sudo mysql
-        echo "SHOW TABLES;" | sudo mysql
+        echo "USE $DATABASE_NAME;SHOW TABLES;" | sudo mysql
         echo -e "${BLUE} What do you want to name your table? ${COLOR_OFF}"
         read TABLE_NAME
+        cmd="CREATE TABLE $TABLE_NAME ("
         echo -e "${BLUE} How many columns do you want to create? ${COLOR_OFF}"
         read COLUMN_NUMBER
-        echo "CREATE TABLE $TABLE_NAME (" | sudo mysql
         for ((i=1; i<=$COLUMN_NUMBER; i++))
         do
             echo -e "${BLUE} What do you want to name your column? ${COLOR_OFF}"
@@ -67,7 +66,7 @@ if [ $exitstatus = 0 ]; then
             echo -e "${BLUE} What type of data do you want to store in this column?(Please mind how you write it) ${COLOR_OFF}"
             echo -e "${YELLOW} Examples: VARCHAR(255),INT,DATE,TEXT ${COLOR_OFF}"
             read COLUMN_TYPE
-            echo "$COLUMN_NAME $COLUMN_TYPE," | sudo mysql
+            cmd="$cmd $COLUMN_NAME $COLUMN_TYPE,"
         done
         echo ");" | sudo mysql
         echo -e "${GREEN} Your table has been created! ${COLOR_OFF}"
