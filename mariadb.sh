@@ -30,8 +30,7 @@ if [ $exitstatus = 0 ]; then
         echo -e "${BLUE} What do you want to name your database? ${COLOR_OFF}"
         read DATABASE_NAME
         echo "CREATE DATABASE $DATABASE_NAME;" | sudo mysql
-        REP=$(whiptail --title "MariaDB" --yesno "Do you want to grant privileges to a user?" 8 78)
-        if [ $REP = 0 ]; then
+        if (whiptail --title "MariaDB" --yesno "Do you want to grant privileges to a user?" 8 78); then
             echo "SELECT User FROM mysql.user;" | sudo mysql
             echo -e "${BLUE} Choose a user to grant privileges to ${COLOR_OFF}"
             read USER_NAME
