@@ -1,7 +1,5 @@
 #!/bin/bash
 
-#!/bin/bash
-
 # Reset
 COLOR_OFF='\033[0m'       # Text Reset
 
