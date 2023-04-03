@@ -37,7 +37,7 @@ if [ $exitstatus = 0 ]; then
             echo "GRANT ALL PRIVILEGES ON $DATABASE_NAME.* TO '$USER_NAME'@'localhost' WITH GRANT OPTION;" | sudo mysql
             echo "FLUSH PRIVILEGES;" | sudo mysql
         fi
-        echo -e "${GREEN} Your database has been created! ${COLOR_OFF}"
+        echo -e "${GREEN} Database creation process done ${COLOR_OFF}"
     elif [ "$CHOIX" = "Create user and grant privileges" ]; then
         echo -e "${BLUE} What do you want to name your user? ${COLOR_OFF}"
         read USER_NAME
@@ -46,7 +46,7 @@ if [ $exitstatus = 0 ]; then
         echo "CREATE USER '$USER_NAME'@'localhost' IDENTIFIED BY '$USER_PASSWORD';" | sudo mysql
         echo "GRANT ALL PRIVILEGES ON *.* TO '$USER_NAME'@'localhost' WITH GRANT OPTION;" | sudo mysql
         echo "FLUSH PRIVILEGES;" | sudo mysql
-        echo -e "${GREEN} Your user has been created! ${COLOR_OFF}"
+        echo -e "${GREEN} User creation process done ${COLOR_OFF}"
     elif [ "$CHOIX" = "Show databases" ]; then
         echo "SHOW DATABASES;" | sudo mysql
     elif [ "$CHOIX" = "Create a table" ]; then
@@ -73,7 +73,7 @@ if [ $exitstatus = 0 ]; then
         done
         cmd="$cmd $pmk);"
         echo "USE $DATABASE_NAME; $cmd" | sudo mysql
-        echo -e "${GREEN} Your table has been created! ${COLOR_OFF}"
+        echo -e "${GREEN} Table creation process done ${COLOR_OFF}"
     elif [ "$CHOIX" = "Show tables" ]; then
         echo "SHOW DATABASES;" | sudo mysql
         echo -e "${BLUE} Choose a database to show tables in ${COLOR_OFF}"
