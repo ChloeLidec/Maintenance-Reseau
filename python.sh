@@ -7,8 +7,6 @@ COLOR_OFF='\033[0m'       # Text Reset
 RED='\033[0;31m'          # Red
 GREEN='\033[0;32m'        # Green
 
-# sudo apt-get update && sudo apt-get upgrade -y -> cette ligne sera faite dans le programme principal
-
 eval SELECTION=( $(whiptail --title "Python" \
 --checklist "Choose what you want to install" 25 80 8 \
 "Python" "" ON \

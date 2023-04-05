@@ -1,6 +1,6 @@
 #!/bin/bash
 chmod u+x code.sh java.sh python.sh electron.sh flask.sh git.sh mariadb.sh
-
+sudo apt update && sudo apt upgrade -y
 # Reset
 COLOR_OFF='\033[0m'       # Text Reset
 
