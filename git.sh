@@ -12,13 +12,12 @@ BLUE='\033[0;34m'         # Blue
 echo -e "${BLUE} Welcome to the git menu ${COLOR_OFF}"
 echo -e "${YELLOW} You can choose which action you want to perform. While you haven't selected cancel or quit, the menu will keep showing for you to do stuff ${COLOR_OFF}"
 
-CHOIX=""
-exitstatus=0
-while [ "$CHOIX" != "Quitter" ] && [ $exitstatus = 0 ];
+fini="no"
+while [ "$fini" == "no" ];
 do
     CHOIX=$(whiptail --title "Git" --menu \
     "Choose what you want to do" 25 80 8 \
-    "Commit modified files from actual directory" "" \`
+    "Commit modified files from actual directory" "" \
     "Config" "" \
     "Push" "" \
     "Pull" "" \
@@ -27,7 +26,7 @@ do
     "Merge" "" \
     "Stash" "" \
     "Tag" "" \
-    "Quitter" 3>&1 1>&2 2>&3)
+    "Quit" "" 3>&1 1>&2 2>&3)
 
     exitstatus=$?
     if [ $exitstatus = 0 ]; then
@@ -79,8 +78,11 @@ do
             read EMAIL
             git config --global user.email "$EMAIL"
             echo -e " ${BLUE} Config done ${COLOR_OFF}"
+        elif [ "$CHOIX" == "Quit" ]; then
+            fini="yes"
         fi
     else
-        echo "${RED} You chose Cancel. ${COLOR_OFF}"
+        echo -e "${RED} You chose Cancel. ${COLOR_OFF}"
+        fini="yes"
     fi
 done
