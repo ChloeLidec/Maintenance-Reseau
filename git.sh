@@ -9,6 +9,8 @@ GREEN='\033[0;32m'        # Green
 YELLOW='\033[0;33m'       # Yellow
 BLUE='\033[0;34m'         # Blue
 
+echo -e "${BLUE} Welcome to the git menu ${COLOR_OFF}"
+echo -e "${YELLOW} You can choose which action you want to perform. While you haven't selected cancel or quit, the menu will keep showing for you to do stuff ${COLOR_OFF}"
 
 CHOIX=""
 exitstatus=0
