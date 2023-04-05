@@ -1,6 +1,7 @@
 #!/bin/bash
-chmod u+x code.sh java.sh python.sh electron.sh flask.sh git.sh mariadb.sh
 sudo apt update && sudo apt upgrade -y
+chmod u+x code.sh java.sh python.sh electron.sh flask.sh git.sh mariadb.sh
+
 # Reset
 COLOR_OFF='\033[0m'       # Text Reset
 
@@ -13,9 +14,8 @@ BLUE='\033[0;34m'         # Blue
 echo -e "${BLUE} Welcome to the general menu ${COLOR_OFF}"
 echo -e "${YELLOW} You can choose which subprogram you want to use. While you haven't selected cancel or quit, the menu will keep showing for you to do stuff ${COLOR_OFF}"
 
-CHOIX=""
-exitstatus=0
-while [ "$CHOIX" != "Quitter" ] && [ $exitstatus = 0 ];
+fini="no"
+while [ "$fini" == "no" ];
 do
     CHOIX=$(whiptail --title "General menu" --menu \
     "Choose what subprogram you want to use" 25 80 8 \
@@ -26,7 +26,7 @@ do
     "Flask" "" \
     "Git" "" \
     "MariaDB" "" \
-    "Quit" 3>&1 1>&2 2>&3)
+    "Quit" "" 3>&1 1>&2 2>&3)
     exitstatus=$?
     if [ $exitstatus = 0 ]; then
         if [ "$CHOIX" == "Code extensions" ]; then
@@ -43,9 +43,11 @@ do
             ./git.sh
         elif [ "$CHOIX" == "MariaDB" ]; then
             ./mariadb.sh
+        elif [ "$CHOIX" == "Quit" ]; then
+            fini="yes"
         fi
     else
         echo -e " ${RED} User selected Cancel. ${COLOR_OFF}"
-    fi
+        fini="yes"
     fi
 done
