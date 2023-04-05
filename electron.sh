@@ -26,6 +26,10 @@ if [ "${#SELECTION[@]}" != 0 ]; then
             sudo apt install -y npm
             echo -e "${GREEN} NPM installation done ${COLOR_OFF}"
         elif [ "$choice" == "Install Electron" ]; then
+            if [ ! -x "$(command -v npm)" ]; then
+                echo -e "${YELLOW} npm is going to be installed to proceed. ${COLOR_OFF}"
+                sudo apt install -y npm
+            fi
             sudo npm i electron -g
             echo -e "${GREEN} Electron installation done ${COLOR_OFF}"
         elif [ "$choice" == "Npm intellisense" ]; then
