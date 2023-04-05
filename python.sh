@@ -51,6 +51,10 @@ if [ "${#SELECTION[@]}" != 0 ]; then
             sudo apt install -y pylint
             echo -e "${GREEN} Pylint installation done ${COLOR_OFF}"
         elif [ "$choice" == "Pygame" ]; then
+            if [ ! -x "$(command -v pip)" ]; then
+                echo -e "${YELLOW} pip is going to be installed to proceed. ${COLOR_OFF}"
+                sudo apt install python3-pip
+            fi
             pip install pygame
             echo -e "${GREEN} Pygame installation done ${COLOR_OFF}"
         fi

@@ -22,24 +22,52 @@ eval SELECTION=( $(whiptail --title "Flask" --checklist \
 if [ "${#SELECTION[@]}" != 0 ]; then
     for choice in "${SELECTION[@]}"; do
         if [ "$choice" == "Flask" ]; then
+            if [ ! -x "$(command -v pip)" ]; then
+                echo -e "${YELLOW} pip is going to be installed to proceed. ${COLOR_OFF}"
+                sudo apt install python3-pip
+            fi
             pip install flask
             echo -e "${GREEN} Flask installation done ${COLOR_OFF}"
         elif [ "$choice" == "Virtual Env" ]; then
+            if [ ! -x "$(command -v pip)" ]; then
+                echo -e "${YELLOW} pip is going to be installed to proceed. ${COLOR_OFF}"
+                sudo apt install python3-pip
+            fi
             pip install python-dotenv
             echo -e "${GREEN} Virtual Env installation done ${COLOR_OFF}"
         elif [ "$choice" == "Flask-SQLAlchemy" ]; then
+            if [ ! -x "$(command -v pip)" ]; then
+                echo -e "${YELLOW} pip is going to be installed to proceed. ${COLOR_OFF}"
+                sudo apt install python3-pip
+            fi
             pip install flask-sqlalchemy
             echo -e "${GREEN} Flask-SQLAlchemy installation done ${COLOR_OFF}"
         elif [ "$choice" == "Flask-WTF" ]; then
+            if [ ! -x "$(command -v pip)" ]; then
+                echo -e "${YELLOW} pip is going to be installed to proceed. ${COLOR_OFF}"
+                sudo apt install python3-pip
+            fi
             pip install flask-wtf
             echo -e "${GREEN} Flask-WTF installation done ${COLOR_OFF}"
         elif [ "$choice" == "Flask-Login" ]; then
+            if [ ! -x "$(command -v pip)" ]; then
+                echo -e "${YELLOW} pip is going to be installed to proceed. ${COLOR_OFF}"
+                sudo apt install python3-pip
+            fi
             pip install flask-login
             echo -e "${GREEN} Flask-Login installation done ${COLOR_OFF}"
         elif [ "$choice" == "Flask-Bootstrap" ]; then
+            if [ ! -x "$(command -v pip)" ]; then
+                echo -e "${YELLOW} pip is going to be installed to proceed. ${COLOR_OFF}"
+                sudo apt install python3-pip
+            fi
             pip install bootstrap-flask
             echo -e "${GREEN} Flask-Bootstrap installation done ${COLOR_OFF}"
         elif [ "$choice" == "Python YAML" ]; then
+            if [ ! -x "$(command -v pip)" ]; then
+                echo -e "${YELLOW} pip is going to be installed to proceed. ${COLOR_OFF}"
+                sudo apt install python3-pip
+            fi
             pip install pyyaml
             echo -e "${GREEN} Python YAML installation done ${COLOR_OFF}"
         fi
