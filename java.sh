@@ -34,6 +34,10 @@ if [ $exitstatus = 0 ]; then
                     sudo apt install -y libmariadb-java
                     echo -e "${GREEN} MariaDB jdbc instalaltion done ${COLOR_OFF}"
                 elif [ "$choice" == "Java vscode extensions" ]; then
+                    if [ ! -x "$(command -v code)" ]; then
+                        echo -e "${YELLOW} Visual Studio Code is going to be installed to proceed. ${COLOR_OFF}"
+                        sudo snap install code --classic
+                    fi
                     code --install-extension visualstudioexptteam.vscodeintellicode 
                     code --install-extension vscjava.vscode-java-debug 
                     code --install-extension redhat.java 

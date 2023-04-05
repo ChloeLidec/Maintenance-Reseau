@@ -24,20 +24,26 @@ if [ "${#SELECTION[@]}" != 0 ]; then
             sudo apt install -y python3-pip
             echo -e "${GREEN} Python installation done ${COLOR_OFF}"
         elif [ "$choice" == "Basic python vscode extension" ]; then
+            if [ ! -x "$(command -v code)" ]; then
+                echo -e "${YELLOW} Visual Studio Code is going to be installed to proceed. ${COLOR_OFF}"
+                sudo snap install code --classic
+            fi
             code --install-extension ms-python.python
             echo -e "${GREEN} Basic python vscode extension installation done ${COLOR_OFF}"
-            echo -e "${YELLOW} If there was an installation error, it is probably because you don't have code installed. ${COLOR_OFF}"
-            echo -e "${BLUE} You can install code by running the principal script ${COLOR_OFF}"
         elif [ "$choice" == "Autodocstring vscode extension" ]; then
+            if [ ! -x "$(command -v code)" ]; then
+                echo -e "${YELLOW} Visual Studio Code is going to be installed to proceed. ${COLOR_OFF}"
+                sudo snap install code --classic
+            fi
             code --install-extension njpwerner.autodocstring
             echo -e "${GREEN} Autodocstring installation done ${COLOR_OFF}"
-            echo -e "${YELLOW} If there was an installation error, it is probably because you don't have code installed. ${COLOR_OFF}"
-            echo -e "${BLUE} You can install code by running the principal script ${COLOR_OFF}"
         elif [ "$choice" == "Pylance vscode extension" ]; then
+            if [ ! -x "$(command -v code)" ]; then
+                echo -e "${YELLOW} Visual Studio Code is going to be installed to proceed. ${COLOR_OFF}"
+                sudo snap install code --classic
+            fi
             code --install-extension ms-python.vscode-pylance
             echo -e "${GREEN} Pylance installation done ${COLOR_OFF}"
-            echo -e "${YELLOW} If there was an installation error, it is probably because you don't have code installed. ${COLOR_OFF}"
-            echo -e "${BLUE} You can install code by running the principal script ${COLOR_OFF}"
         elif [ "$choice" == "Pytest" ]; then
             sudo apt install -y python3-pytest
             echo -e "${GREEN} Pytest installation done ${COLOR_OFF}"

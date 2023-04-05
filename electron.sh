@@ -29,9 +29,17 @@ if [ "${#SELECTION[@]}" != 0 ]; then
             sudo npm i electron -g
             echo -e "${GREEN} Electron installation done ${COLOR_OFF}"
         elif [ "$choice" == "Npm intellisense" ]; then
+            if [ ! -x "$(command -v code)" ]; then
+                echo -e "${YELLOW} Visual Studio Code is going to be installed to proceed. ${COLOR_OFF}"
+                sudo snap install code --classic
+            fi
             code --install-extension christian-kohler.npm-intellisense
             echo -e "${GREEN} Npm intellisense installation done ${COLOR_OFF}"
         elif [ "$choice" == "ESLint" ]; then
+            if [ ! -x "$(command -v code)" ]; then
+                echo -e "${YELLOW} Visual Studio Code is going to be installed to proceed. ${COLOR_OFF}"
+                sudo snap install code --classic
+            fi
             code --install-extension dbaeumer.vscode-eslint
             echo -e "${GREEN} ESLint installation done ${COLOR_OFF}"
         fi

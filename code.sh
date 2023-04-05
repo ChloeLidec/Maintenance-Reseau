@@ -22,12 +22,24 @@ if [ "${#SELECTION[@]}" != 0 ]; then
             sudo snap install code --classic
             echo -e "${GREEN} Visual Studio Code installation done ${COLOR_OFF}"
         elif [ "$choice" == "GitHub Copilot" ]; then
+            if [ ! -x "$(command -v code)" ]; then
+                echo -e "${YELLOW} Visual Studio Code is going to be installed to proceed. ${COLOR_OFF}"
+                sudo snap install code --classic
+            fi
             code --install-extension github.copilot
             echo -e "${GREEN} GitHub Copilot installation done ${COLOR_OFF}"
         elif [ "$choice" == "PDF Viewer" ]; then
+            if [ ! -x "$(command -v code)" ]; then
+                echo -e "${YELLOW} Visual Studio Code is going to be installed to proceed. ${COLOR_OFF}"
+                sudo snap install code --classic
+            fi
             code --install-extension tomoki1207.pdf
             echo -e "${GREEN} PDF Viewer installation done ${COLOR_OFF}"
         elif [ "$choice" == "SonarLint" ]; then
+            if [ ! -x "$(command -v code)" ]; then
+                echo -e "${YELLOW} Visual Studio Code is going to be installed to proceed. ${COLOR_OFF}"
+                sudo snap install code --classic
+            fi
             code --install-extension sonarsource.sonarlint-vscode
             echo -e "${GREEN} SonarLint installation done ${COLOR_OFF}"
         fi
